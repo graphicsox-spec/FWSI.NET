@@ -1,0 +1,301 @@
+:root {
+  --page-width: 1366px;
+  --page-height: 4650px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: #fff;
+}
+
+body {
+  min-width: 320px;
+}
+
+.page-shell {
+  position: relative;
+  width: 100%;
+  height: var(--page-height);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.custom-size-1 {
+  width: var(--page-width);
+  max-width: none;
+  flex: 0 0 var(--page-width);
+  margin: 0 auto;
+  overflow: hidden;
+  transform-origin: top center;
+  will-change: transform;
+}
+
+img {
+  display: block;
+}
+
+.about,
+.framework-solutions-has,
+.powered-by-shopodexcom,
+.span4 {
+  white-space: normal;
+}
+
+.framework-solutions-has {
+  line-height: 1.28;
+}
+
+.over-50k-installed-container,
+.insurance-e-commerce-platform-container,
+.cancer-research-and-container,
+.lease-transaction-processing-container,
+.calculate-margin-commissions-container {
+  font-size: 18px;
+  line-height: 1.15;
+  white-space: normal;
+}
+
+.over-50k-installed-container .our-consultants-provide,
+.insurance-e-commerce-platform-container .our-consultants-provide,
+.cancer-research-and-container .our-consultants-provide,
+.lease-transaction-processing-container .framework-solutions-launches,
+.calculate-margin-commissions-container .framework-solutions-launches {
+  font-size: 14px;
+  line-height: 1.28;
+}
+
+.cancer-research-and-container,
+.lease-transaction-processing-container {
+  font-size: 17px;
+  line-height: 1.14;
+}
+
+.cancer-research-and-container .our-consultants-provide,
+.lease-transaction-processing-container .framework-solutions-launches {
+  font-size: 13.5px;
+  line-height: 1.25;
+}
+
+.learn-more-wrapper,
+.learn-more-container,
+.learn-more-frame,
+.group-div,
+.read-more-wrapper,
+.read-more-container,
+.test-drive-now-wrapper {
+  overflow: hidden;
+}
+
+/* Restore the exported flat PDF styling and neutralize later theme overrides. */
+.custom-size-1 {
+  background: #fff;
+  box-shadow: none;
+}
+
+.custom-size-1-child {
+  background: #313133;
+  box-shadow: none;
+}
+
+.custom-size-1-item {
+  background: #1a1a1a;
+  box-shadow: none;
+}
+
+.custom-size-1-inner,
+.rectangle-div {
+  background: #1d4f9f;
+  box-shadow: none;
+}
+
+.custom-size-1-child2,
+.custom-size-1-child5 {
+  background: #ebebeb;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.custom-size-1-child3 {
+  background: #fff;
+  border: 0;
+  box-shadow: none;
+}
+
+.custom-size-1-child4 {
+  background: #1d4f9f;
+  box-shadow: none;
+}
+
+.custom-size-1-child11,
+.custom-size-1-child16,
+.custom-size-1-child17,
+.custom-size-1-child21,
+.custom-size-1-child22,
+.path-77-icon,
+.mask-group-1,
+.mask-group-2,
+.mask-group-3,
+.mask-group-4,
+.mask-group-5,
+.mask-group-6,
+.mask-group-7,
+.mask-group-8,
+.logo500-icon,
+.ellipse-icon,
+.custom-size-1-child8,
+.custom-size-1-child9,
+.custom-size-1-child10 {
+  box-shadow: none;
+  filter: none;
+  transform: none;
+}
+
+.learn-more-wrapper,
+.test-drive-now-wrapper {
+  background: transparent;
+  box-shadow: none;
+  border-radius: 15px;
+  border-style: solid;
+}
+
+.learn-more-container,
+.learn-more-frame,
+.group-div,
+.read-more-wrapper,
+.read-more-container {
+  background: transparent;
+  box-shadow: none;
+  color: #1d4f9f;
+}
+
+.read-more-wrapper,
+.read-more-container {
+  border: 2px solid #1d4f9f;
+}
+
+.div,
+.div2,
+.am,
+.am3 {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+.automation,
+.framework-solutions-software-d,
+.los-angeles-database,
+.featured-solutions,
+.latest-blog-posts,
+.framework-solutions-presents {
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  text-shadow: none;
+}
+
+.los-angeles-database,
+.featured-solutions {
+  color: #1d4f9f;
+}
+
+.latest-blog-posts {
+  color: #fff;
+}
+
+.framework-solutions-presents {
+  color: #313133;
+}
+
+.custom-e-commerce-website,
+.sell-more-online,
+.framework-solutions-has,
+.framework-solutions-provides,
+.shopodex-is-a-container,
+.powered-by-shopodexcom {
+  color: #313133;
+  text-shadow: none;
+}
+
+.framework-solutions-has,
+.framework-solutions-provides,
+.shopodex-is-a-container {
+  font-size: 18px;
+  line-height: 1.28;
+}
+
+.framework-solutions-provides {
+  text-align: center;
+}
+
+.shopodex-is-a-container {
+  color: #1d4f9f;
+  font-size: 17px;
+  line-height: 1.22;
+}
+
+.interview-your-staff,
+.microsoft-mvcnet-and,
+.create-api-integration,
+.customization-with-plug-ins {
+  font-size: 14px;
+  line-height: 1.18;
+  color: #313133;
+}
+
+.over-50k-installed-container,
+.insurance-e-commerce-platform-container,
+.cancer-research-and-container {
+  background: none;
+  border-radius: 0;
+  padding: 0;
+  backdrop-filter: none;
+}
+
+.over-50k-installed-container,
+.cancer-research-and-container {
+  color: #313133;
+}
+
+.insurance-e-commerce-platform-container {
+  color: #fff;
+}
+
+.over-50k-installed-container .home,
+.cancer-research-and-container .home,
+.insurance-e-commerce-platform-container .home {
+  padding: 0;
+  background: none;
+}
+
+.over-50k-installed-container .home,
+.cancer-research-and-container .home {
+  color: #313133;
+}
+
+.insurance-e-commerce-platform-container .home {
+  color: #fff;
+}
+
+.home-about-services .home {
+  color: #fff;
+  padding: 0;
+  background: none;
+}
+
+.powered-by-shopodexcom {
+  font-size: 22px;
+  color: #fff;
+}
