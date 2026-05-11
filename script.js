@@ -55,7 +55,7 @@
 
 
         // ==========================================
-        // 2. SYMMETRICAL GSAP SLIDER ANIMATIONS
+        // 2. ROBUST GSAP SLIDER ANIMATIONS
         // ==========================================
         const slides = document.querySelectorAll('.slide');
         let currentSlide = 0;
@@ -63,27 +63,58 @@
 
         function drawPaths(slide) {
             const lines = slide.querySelectorAll('.draw-path');
-            lines.forEach(line => {
-                const length = line.getTotalLength();
-                gsap.fromTo(line, 
-                    { strokeDasharray: length, strokeDashoffset: length },
-                    { strokeDashoffset: 0, duration: 2, ease: "power3.out" }
-                );
+            lines.forEach((line, i) => {
+                try {
+                    const length = line.getTotalLength();
+                    if (length > 0) {
+                        gsap.set(line, { strokeDasharray: length, strokeDashoffset: length });
+                        gsap.to(line, { strokeDashoffset: 0, duration: 1.8, delay: i * 0.15, ease: "power2.out" });
+                    }
+                } catch(e) {
+                    // Fallback — force show the line
+                    gsap.set(line, { strokeDasharray: 'none', strokeDashoffset: 0, opacity: 1 });
+                }
             });
             const joints = slide.querySelectorAll('.pop-in');
-            gsap.fromTo(joints, 
-                { scale: 0, opacity: 0 }, 
-                { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(2)", stagger: 0.5 }
-            );
+            if (joints.length) {
+                gsap.fromTo(joints,
+                    { scale: 0, opacity: 0 },
+                    { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2)", stagger: 0.2, delay: 0.3 }
+                );
+            }
         }
 
+        function resetPaths(slide) {
+            const lines = slide.querySelectorAll('.draw-path');
+            lines.forEach(line => {
+                try {
+                    const length = line.getTotalLength();
+                    gsap.set(line, { strokeDasharray: length, strokeDashoffset: length });
+                } catch(e) {}
+            });
+            const joints = slide.querySelectorAll('.pop-in');
+            gsap.set(joints, { scale: 0, opacity: 0 });
+        }
+
+        // Initialize first slide
         if (slides.length > 0) {
+            // Reset all non-active slides
+            slides.forEach((s, i) => {
+                if (i !== 0) resetPaths(s);
+            });
+
             const initContent = slides[0].querySelectorAll('.content-section > *');
             const initGraphic = slides[0].querySelectorAll('.center-hub-container, .node-wrapper');
+
+            gsap.from(initContent, { x: -30, opacity: 0, duration: 1, stagger: 0.12, ease: "power2.out" });
+            gsap.from(initGraphic, { scale: 0.8, opacity: 0, duration: 1, stagger: 0.15, ease: "back.out(1.2)", delay: 0.3 });
             
-            gsap.from(initContent, { x: -30, opacity: 0, duration: 1, stagger: 0.1, ease: "power2.out" });
-            gsap.from(initGraphic, { scale: 0.8, opacity: 0, duration: 1, stagger: 0.1, ease: "back.out(1.2)", delay: 0.3 });
-            setTimeout(() => drawPaths(slides[0]), 300);
+            // Draw paths after a frame to ensure SVG is rendered
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    drawPaths(slides[0]);
+                });
+            });
         }
 
         function changeSlide(newIndex) {
@@ -99,24 +130,45 @@
             const nextContent = nextSlide.querySelectorAll('.content-section > *');
             const nextGraphic = nextSlide.querySelectorAll('.center-hub-container, .node-wrapper');
 
-            const tl = gsap.timeline({ onComplete: () => {
-                oldSlide.classList.remove('active');
-                nextSlide.classList.add('active');
-                isAnimating = false;
-                currentSlide = newIndex;
-            }});
+            // Kill any running animations on these elements
+            gsap.killTweensOf(oldContent);
+            gsap.killTweensOf(oldGraphic);
+            gsap.killTweensOf(nextContent);
+            gsap.killTweensOf(nextGraphic);
 
-            tl.to(oldContent, { x: -20, opacity: 0, duration: 0.4, stagger: 0.05, ease: "power2.in" }, 0)
-              .to(oldGraphic, { scale: 0.95, opacity: 0, duration: 0.4, stagger: 0.05, ease: "power2.in" }, 0);
+            // Reset paths on next slide before showing
+            resetPaths(nextSlide);
 
-            gsap.set(nextContent, { x: 20, opacity: 0 });
-            gsap.set(nextGraphic, { scale: 0.9, opacity: 0 });
+            const tl = gsap.timeline({
+                onComplete: () => {
+                    oldSlide.classList.remove('active');
+                    isAnimating = false;
+                    currentSlide = newIndex;
+                }
+            });
+
+            // Fade out old slide
+            tl.to(oldContent, { x: -20, opacity: 0, duration: 0.35, stagger: 0.04, ease: "power2.in" }, 0)
+              .to(oldGraphic, { scale: 0.95, opacity: 0, duration: 0.35, stagger: 0.04, ease: "power2.in" }, 0);
+
+            // Prepare next slide
+            gsap.set(nextContent, { x: 25, opacity: 0 });
+            gsap.set(nextGraphic, { scale: 0.85, opacity: 0 });
             nextSlide.classList.add('active');
 
-            tl.to(nextContent, { x: 0, opacity: 1, duration: 0.8, stagger: 0.08, ease: "power3.out" }, 0.5)
-              .to(nextGraphic, { scale: 1, opacity: 1, duration: 0.8, stagger: 0.08, ease: "back.out(1.2)" }, 0.6);
+            // Animate in next slide
+            tl.to(nextContent, { x: 0, opacity: 1, duration: 0.7, stagger: 0.08, ease: "power3.out" }, 0.45)
+              .to(nextGraphic, { scale: 1, opacity: 1, duration: 0.7, stagger: 0.1, ease: "back.out(1.2)" }, 0.55);
 
-            setTimeout(() => drawPaths(nextSlide), 700);
+            // Draw paths after next slide is visible and rendered
+            tl.call(() => {
+                requestAnimationFrame(() => drawPaths(nextSlide));
+            }, null, 0.6);
+
+            // Update pagination dots
+            document.querySelectorAll('.pagination .dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === newIndex);
+            });
         }
 
         function nextSlide() {
@@ -140,6 +192,7 @@
         setInterval(() => {
             if(!isAnimating) nextSlide();
         }, 8000);
+
 
         // 3. Mouse Movement Parallax Effect (ISOLATED TO HERO WRAPPER)
         document.addEventListener('mousemove', (e) => {
