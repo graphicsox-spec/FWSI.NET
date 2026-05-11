@@ -122,11 +122,12 @@
             min-height: 700px;
             background-color: var(--bg-color);
             color: var(--text-main);
-            overflow: hidden; /* Hidden overflow applied ONLY to the slider */
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Inter', sans-serif;
+            padding-bottom: 90px; /* room for stats bar */
         }
 
         /* Moving Particles Canvas */

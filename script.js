@@ -168,3 +168,41 @@
                 });
             }
         });
+
+        // ==========================================
+        // HOMEPAGE COUNTER ANIMATION
+        // ==========================================
+        function hpAnimateCounters() {
+            document.querySelectorAll('.hp-stat-num').forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                if (counter.dataset.done) return;
+                counter.dataset.done = '1';
+                const duration = 2000, start = performance.now();
+                function update(now) {
+                    const p = Math.min((now - start) / duration, 1);
+                    const eased = 1 - Math.pow(1 - p, 3);
+                    counter.textContent = Math.floor(eased * target);
+                    if (p < 1) requestAnimationFrame(update);
+                    else counter.textContent = target;
+                }
+                requestAnimationFrame(update);
+            });
+        }
+
+        // ==========================================
+        // HOMEPAGE SCROLL ANIMATIONS
+        // ==========================================
+        const hpObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('hp-visible');
+                    if (entry.target.querySelector('.hp-stat-num')) hpAnimateCounters();
+                    hpObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.hp-overview-text, .hp-overview-image, .hp-fstats-bar, .hp-svc-item, .hp-best-card, .hp-port-card, .hp-blog-card, .hp-contact-card').forEach(el => {
+            el.classList.add('hp-animate');
+            hpObserver.observe(el);
+        });
