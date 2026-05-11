@@ -43,9 +43,9 @@
 .hp-svc-bg-pattern{position:absolute;inset:0;background-image:radial-gradient(rgba(0,210,255,.06) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
 .hp-svc-showcase{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative;z-index:2}
 .hp-svc-item{padding:36px 28px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(10px);transition:all .4s ease;position:relative;overflow:hidden;text-align:center}
-.hp-svc-item::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:60px;height:3px;background:linear-gradient(90deg,var(--accent-cyan),var(--primary));border-radius:0 0 3px 3px;transition:width .4s}
+.hp-svc-item::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:40px;height:3px;background:linear-gradient(90deg,var(--accent-cyan),var(--primary));border-radius:0 0 3px 3px;transition:all .4s ease;opacity:0}
 .hp-svc-item:hover{transform:translateY(-8px);background:rgba(255,255,255,.08);border-color:rgba(0,210,255,.3);box-shadow:0 20px 50px rgba(0,210,255,.1)}
-.hp-svc-item:hover::before{width:100%}
+.hp-svc-item:hover::before{width:100%;opacity:1}
 .hp-svc-step{font-size:52px;font-weight:900;background:linear-gradient(135deg,rgba(0,210,255,.15),rgba(29,79,159,.1));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:16px}
 .hp-svc-icon-v2{width:76px;height:76px;border-radius:18px;background:linear-gradient(135deg,rgba(0,210,255,.12),rgba(29,79,159,.15));border:1px solid rgba(0,210,255,.2);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;transition:all .4s}
 .hp-svc-icon-v2 i{font-size:32px;color:var(--accent-cyan);transition:transform .3s}

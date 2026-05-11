@@ -61,46 +61,34 @@
         let currentSlide = 0;
         let isAnimating = false;
 
-        function drawPaths(slide) {
-            const lines = slide.querySelectorAll('.draw-path');
-            lines.forEach((line, i) => {
-                try {
-                    const length = line.getTotalLength();
-                    if (length > 0) {
-                        gsap.set(line, { strokeDasharray: length, strokeDashoffset: length });
-                        gsap.to(line, { strokeDashoffset: 0, duration: 1.8, delay: i * 0.15, ease: "power2.out" });
-                    }
-                } catch(e) {
-                    // Fallback — force show the line
-                    gsap.set(line, { strokeDasharray: 'none', strokeDashoffset: 0, opacity: 1 });
-                }
-            });
+        function animateSlideGraphics(slide) {
+            // Animate SVG layer (lines + joints) with opacity
+            const svgLayer = slide.querySelector('.svg-layer');
+            if (svgLayer) {
+                gsap.fromTo(svgLayer, { opacity: 0 }, { opacity: 1, duration: 1.2, ease: "power2.out", delay: 0.3 });
+            }
+            // Animate joints with pop-in effect
             const joints = slide.querySelectorAll('.pop-in');
             if (joints.length) {
                 gsap.fromTo(joints,
                     { scale: 0, opacity: 0 },
-                    { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2)", stagger: 0.2, delay: 0.3 }
+                    { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(2)", stagger: 0.15, delay: 0.5 }
                 );
             }
         }
 
-        function resetPaths(slide) {
-            const lines = slide.querySelectorAll('.draw-path');
-            lines.forEach(line => {
-                try {
-                    const length = line.getTotalLength();
-                    gsap.set(line, { strokeDasharray: length, strokeDashoffset: length });
-                } catch(e) {}
-            });
+        function hideSlideGraphics(slide) {
+            const svgLayer = slide.querySelector('.svg-layer');
+            if (svgLayer) gsap.set(svgLayer, { opacity: 0 });
             const joints = slide.querySelectorAll('.pop-in');
-            gsap.set(joints, { scale: 0, opacity: 0 });
+            if (joints.length) gsap.set(joints, { scale: 0, opacity: 0 });
         }
 
         // Initialize first slide
         if (slides.length > 0) {
-            // Reset all non-active slides
+            // Hide graphics on all non-active slides
             slides.forEach((s, i) => {
-                if (i !== 0) resetPaths(s);
+                if (i !== 0) hideSlideGraphics(s);
             });
 
             const initContent = slides[0].querySelectorAll('.content-section > *');
@@ -108,13 +96,7 @@
 
             gsap.from(initContent, { x: -30, opacity: 0, duration: 1, stagger: 0.12, ease: "power2.out" });
             gsap.from(initGraphic, { scale: 0.8, opacity: 0, duration: 1, stagger: 0.15, ease: "back.out(1.2)", delay: 0.3 });
-            
-            // Draw paths after a frame to ensure SVG is rendered
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    drawPaths(slides[0]);
-                });
-            });
+            animateSlideGraphics(slides[0]);
         }
 
         function changeSlide(newIndex) {
@@ -136,8 +118,8 @@
             gsap.killTweensOf(nextContent);
             gsap.killTweensOf(nextGraphic);
 
-            // Reset paths on next slide before showing
-            resetPaths(nextSlide);
+            // Hide graphics on next slide before showing
+            hideSlideGraphics(nextSlide);
 
             const tl = gsap.timeline({
                 onComplete: () => {
@@ -160,14 +142,14 @@
             tl.to(nextContent, { x: 0, opacity: 1, duration: 0.7, stagger: 0.08, ease: "power3.out" }, 0.45)
               .to(nextGraphic, { scale: 1, opacity: 1, duration: 0.7, stagger: 0.1, ease: "back.out(1.2)" }, 0.55);
 
-            // Draw paths after next slide is visible and rendered
-            tl.call(() => {
-                requestAnimationFrame(() => drawPaths(nextSlide));
-            }, null, 0.6);
+            // Animate SVG lines after slide visible
+            tl.call(() => animateSlideGraphics(nextSlide), null, 0.5);
 
-            // Update pagination dots
-            document.querySelectorAll('.pagination .dot').forEach((dot, i) => {
-                dot.classList.toggle('active', i === newIndex);
+            // Update ALL pagination dots across ALL slides
+            document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
+            document.querySelectorAll('.slide').forEach(slide => {
+                const dots = slide.querySelectorAll('.dot');
+                if (dots[newIndex]) dots[newIndex].classList.add('active');
             });
         }
 
