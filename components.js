@@ -122,8 +122,7 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="footer-bottom-inner">
-                    <p>&copy; FWSI.NET 2026 — All rights reserved.</p>
-                    <p class="footer-credit">Design &amp; Development by <a href="https://www.behance.net/advarto" target="_blank" rel="noopener">Advarto</a></p>
+                    <p>&copy; FWSI.NET 2026 — All rights reserved. &nbsp;&nbsp;|&nbsp;&nbsp; Design &amp; Development by <a href="https://www.behance.net/advarto" target="_blank" rel="noopener">Advarto</a></p>
                 </div>
             </div>
         </div>

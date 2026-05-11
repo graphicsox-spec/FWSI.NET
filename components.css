@@ -406,7 +406,7 @@ body { padding-top: 76px; }
 }
 .footer-bottom-inner {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 .footer-bottom p {
@@ -420,6 +420,12 @@ body { padding-top: 76px; }
     transition: color 0.25s;
 }
 .footer-credit a:hover { color: #fff; }
+.footer-bottom p a {
+    color: var(--accent-cyan);
+    text-decoration: none; font-weight: 600;
+    transition: color 0.25s;
+}
+.footer-bottom p a:hover { color: #fff; }
 
 /* Back to Top */
 .back-to-top {
