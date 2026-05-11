@@ -93,7 +93,17 @@
     margin-bottom: 24px; letter-spacing: -1px;
 }
 .text-accent { color: var(--accent-cyan); }
-.section-title .text-accent { font-weight: 700; }
+.section-title .text-accent {
+    font-size: inherit;
+    font-weight: inherit;
+}
+.subtitle-small {
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-top: 6px;
+}
 
 /* =========================================
    COMPANY STORY
@@ -114,10 +124,12 @@
 }
 .about-stat {
     display: flex; flex-direction: column; align-items: center;
+    justify-content: center; text-align: center;
     padding: 20px 28px; background: linear-gradient(145deg, #f0f5ff, #fff);
     border-radius: 16px; border: 1px solid #e2ecf8;
     box-shadow: 0 4px 20px rgba(29,79,159,0.06);
     transition: var(--transition);
+    min-width: 140px;
 }
 .about-stat:hover {
     transform: translateY(-4px);
@@ -125,14 +137,16 @@
 }
 .stat-number {
     font-size: 38px; font-weight: 800; color: var(--primary);
-    line-height: 1;
+    line-height: 1; display: inline;
 }
 .stat-suffix {
     font-size: 28px; font-weight: 800; color: var(--accent-cyan);
+    display: inline;
 }
 .stat-label {
     font-size: 12px; font-weight: 600; text-transform: uppercase;
-    letter-spacing: 1px; color: var(--gray); margin-top: 6px;
+    letter-spacing: 1px; color: var(--gray); margin-top: 8px;
+    text-align: center;
 }
 .about-story-image { position: relative; }
 .image-frame {

@@ -19,30 +19,12 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="components.css" />
 </head>
 <body>
 
-    <!-- Header (Restored Original Layout) -->
-    <div class="container">
-        <header class="header">
-            <div class="logo-container">
-                <img src="./assets/logo-main.svg" onerror="this.onerror=null; this.outerHTML='<h2 style=\'color: var(--primary); font-weight:800; font-size:24px; display:flex; align-items:center; gap:10px;\'><i class=\'fa-brands fa-stripe-s\' style=\'font-size:36px;\'></i>FRAMEWORK<br>SOLUTIONS</h2>';" alt="Framework Solutions" style="height: 50px;">
-            </div>
-            <nav class="nav-links">
-                <a href="#" class="active">Home</a>
-                <a href="about.html">About</a>
-                <a href="#">Services</a>
-                <a href="#">Solutions</a>
-                <a href="#">Blog</a>
-                <a href="#">Contact</a>
-            </nav>
-            <div class="contact-container">
-                <div class="contact-number">
-                    <i class="fa-solid fa-phone"></i> 844-567-2696
-                </div>
-            </div>
-        </header>
-    </div>
+    <!-- Header (Loaded dynamically) -->
+    <div id="header-root"></div>
 
     <!-- ENTERPRISE SAAS SLIDER SECTION (Safe, isolated container) -->
     <section class="hero-wrapper" id="heroWrapper">
@@ -652,48 +634,10 @@
         </div>
     </section>
 
-    <!-- Footer (Restored Original Layout) -->
-    <footer class="footer">
-        <div class="footer-main">
-            <div class="container">
-                <div class="footer-grid">
-                    <div class="footer-logo-container">
-                        <img src="./assets/logo-main.svg" onerror="this.onerror=null; this.outerHTML='<div style=\'display:flex; align-items:center; gap:16px;\'><i class=\'fa-brands fa-stripe-s\' style=\'font-size:48px; color:white;\'></i><h2 style=\'font-size:22px; font-weight:600; color:white; line-height:1.1;\'>FRAMEWORK<br>SOLUTIONS</h2></div>';" alt="Framework Solutions" style="height: 48px; filter: brightness(0) invert(1);">
-                    </div>
-
-                    <nav class="footer-nav-col">
-                        <a href="#">Home</a>
-                        <a href="about.html">About</a>
-                        <a href="#">Services</a>
-                    </nav>
-
-                    <nav class="footer-nav-col">
-                        <a href="#">Solutions</a>
-                        <a href="#">Blog</a>
-                        <a href="#">Contact</a>
-                    </nav>
-
-                    <div class="footer-newsletter">
-                        <div class="footer-phone">
-                            <i class="fa-solid fa-mobile-screen-button"></i> 844-567-2696
-                        </div>
-                        <div class="newsletter-input-wrapper">
-                            <input type="email" placeholder=" ">
-                            <i class="fa-regular fa-envelope"></i>
-                        </div>
-                        <div class="newsletter-text">Sign up for our newsletter</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer-bottom-bar">
-            <div class="container">
-                <p>&copy; FWSI.NET 2026 <span>|</span> Design &amp; Development by <a href="https://www.behance.net/advarto" target="_blank" rel="noopener" style="color: var(--accent-cyan); text-decoration: none; font-weight: 600;">Advarto</a></p>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer (Loaded dynamically) -->
+    <div id="footer-root"></div>
 
     <script src="script.js"></script>
+    <script src="components.js"></script>
 </body>
 </html>

@@ -17,33 +17,13 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="components.css" />
     <link rel="stylesheet" href="about.css" />
 </head>
 <body>
 
-    <!-- Header -->
-    <div class="container">
-        <header class="header">
-            <div class="logo-container">
-                <a href="index.html">
-                    <img src="./assets/logo-main.svg" onerror="this.onerror=null; this.outerHTML='<h2 style=\'color: var(--primary); font-weight:800; font-size:24px; display:flex; align-items:center; gap:10px;\'><i class=\'fa-brands fa-stripe-s\' style=\'font-size:36px;\'></i>FRAMEWORK<br>SOLUTIONS</h2>';" alt="Framework Solutions" style="height: 50px;">
-                </a>
-            </div>
-            <nav class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="about.html" class="active">About</a>
-                <a href="#">Services</a>
-                <a href="#">Solutions</a>
-                <a href="#">Blog</a>
-                <a href="#">Contact</a>
-            </nav>
-            <div class="contact-container">
-                <div class="contact-number">
-                    <i class="fa-solid fa-phone"></i> 844-567-2696
-                </div>
-            </div>
-        </header>
-    </div>
+    <!-- Header (Loaded dynamically) -->
+    <div id="header-root"></div>
 
     <!-- ============================================
          ABOUT PAGE HERO BANNER
@@ -85,7 +65,7 @@
                         <span class="eyebrow-dot"></span>
                         Who We Are
                     </div>
-                    <h2 class="section-title text-primary">Framework Solutions<br><span class="text-accent">Enterprise Application Architecture Assessment</span></h2>
+                    <h2 class="section-title text-primary">Framework Solutions<br><span class="text-accent subtitle-small">Enterprise Application Architecture Assessment</span></h2>
                     <p class="about-lead-text">Framework Solutions has been providing custom software development services to corporate clients across Southern California since 1999. Our business systems analysts will perform an application and technology assessment, identify more efficient workflows, and define an enterprise wide technology strategy.</p>
                     <p class="about-body-text">We utilize agile project management techniques and rapid prototyping to build and deliver transformational custom software solutions, on time and on budget. Our deep expertise spans database architecture, systems integration, medical research technology, financial platforms, and e-commerce solutions.</p>
                     <div class="about-stats-row">
@@ -175,14 +155,14 @@
         <div class="container">
             <div class="strategic-grid">
                 <div class="strategic-image">
-                    <img src="./images/Mask-Group-5@2x.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&h=500&q=80';" alt="Strategic Planning" />
+                    <img src="./images/strategic-team.png" alt="Strategic Planning" />
                 </div>
                 <div class="strategic-content">
                     <div class="section-eyebrow">
                         <span class="eyebrow-dot"></span>
                         Why Choose Us
                     </div>
-                    <h2 class="section-title text-primary">Strategic<br><span class="text-accent">Initiatives</span></h2>
+                    <h2 class="section-title text-primary">Strategic <span class="text-accent">Initiatives</span></h2>
                     <p class="strategic-intro">Our assessment process is designed to help you achieve measurable business outcomes through technology transformation.</p>
                     <div class="strategic-list">
                         <div class="strategic-item">
@@ -298,11 +278,11 @@
             <div class="leadership-grid">
                 <div class="leader-image-wrapper">
                     <div class="leader-image-frame">
-                        <img src="./images/about-ceo.png" alt="CEO - Framework Solutions" />
+                        <img src="./images/Alister Harris Founder.png" alt="Alister Harris - CEO, Framework Solutions" />
                     </div>
                     <div class="leader-social">
                         <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
                         <a href="#" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
                     </div>
                 </div>
@@ -311,7 +291,7 @@
                         <span class="eyebrow-dot"></span>
                         Leadership
                     </div>
-                    <h2 class="section-title text-primary">Meet Our<br><span class="text-accent">Founder</span></h2>
+                    <h2 class="section-title text-primary">Meet Our <span class="text-accent">Founder</span></h2>
                     <div class="leader-name-block">
                         <h3>Framework Solutions</h3>
                         <span class="leader-role">CEO & Founder</span>
@@ -348,49 +328,8 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-main">
-            <div class="container">
-                <div class="footer-grid">
-                    <div class="footer-logo-container">
-                        <a href="index.html">
-                            <img src="./assets/logo-main.svg" onerror="this.onerror=null; this.outerHTML='<div style=\'display:flex; align-items:center; gap:16px;\'><i class=\'fa-brands fa-stripe-s\' style=\'font-size:48px; color:white;\'></i><h2 style=\'font-size:22px; font-weight:600; color:white; line-height:1.1;\'>FRAMEWORK<br>SOLUTIONS</h2></div>';" alt="Framework Solutions" style="height: 48px; filter: brightness(0) invert(1);">
-                        </a>
-                    </div>
-
-                    <nav class="footer-nav-col">
-                        <a href="index.html">Home</a>
-                        <a href="about.html">About</a>
-                        <a href="#">Services</a>
-                    </nav>
-
-                    <nav class="footer-nav-col">
-                        <a href="#">Solutions</a>
-                        <a href="#">Blog</a>
-                        <a href="#">Contact</a>
-                    </nav>
-
-                    <div class="footer-newsletter">
-                        <div class="footer-phone">
-                            <i class="fa-solid fa-mobile-screen-button"></i> 844-567-2696
-                        </div>
-                        <div class="newsletter-input-wrapper">
-                            <input type="email" placeholder=" ">
-                            <i class="fa-regular fa-envelope"></i>
-                        </div>
-                        <div class="newsletter-text">Sign up for our newsletter</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer-bottom-bar">
-            <div class="container">
-                <p>&copy; FWSI.NET 2026 <span>|</span> Design &amp; Development by <a href="https://www.behance.net/advarto" target="_blank" rel="noopener" style="color: var(--accent-cyan); text-decoration: none; font-weight: 600;">Advarto</a></p>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer (Loaded dynamically) -->
+    <div id="footer-root"></div>
 
     <!-- About Page Scripts -->
     <script>
@@ -407,7 +346,6 @@
                 function update(now) {
                     const elapsed = now - start;
                     const progress = Math.min(elapsed / duration, 1);
-                    // ease-out cubic
                     const eased = 1 - Math.pow(1 - progress, 3);
                     counter.textContent = Math.floor(eased * target);
                     if (progress < 1) requestAnimationFrame(update);
@@ -426,7 +364,6 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animate-in');
-                    // Trigger counter if stats row
                     if (entry.target.querySelector('.stat-number')) {
                         animateCounters();
                     }
@@ -491,6 +428,7 @@
             document.querySelector('#aboutStory')?.scrollIntoView({ behavior: 'smooth' });
         });
     </script>
+    <script src="components.js"></script>
 
 </body>
 </html>
