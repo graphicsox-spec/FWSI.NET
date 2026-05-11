@@ -29,16 +29,14 @@
 .hp-img-badge strong{font-size:34px;font-weight:800;line-height:1}
 
 /* --- Hero Stats Bar (inside slider bottom) --- */
-.hp-hero-stats{position:absolute;bottom:0;left:0;right:0;z-index:20;padding:0 24px 20px}
-.hp-fstats-bar{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;align-items:center;gap:0;background:rgba(6,16,40,.7);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:14px;padding:22px 36px;border:1px solid rgba(255,255,255,.08);box-shadow:0 8px 30px rgba(0,0,0,.25)}
-.hp-fstat{display:flex;align-items:center;gap:12px;justify-content:center}
-.hp-fstat-icon{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.hp-fstat-icon i{font-size:16px;color:var(--accent-cyan)}
-.hp-fstat-data{display:flex;flex-direction:column}
-.hp-fstat-data .hp-stat-num{font-size:28px;font-weight:800;color:#fff;line-height:1;display:inline}
-.hp-fstat-data .hp-stat-plus{font-size:22px;font-weight:800;color:var(--accent-cyan);display:inline}
-.hp-fstat-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.45);margin-top:3px}
-.hp-fstat-divider{width:1px;height:40px;background:rgba(255,255,255,.1);margin:0 4px}
+.hp-hero-stats{position:absolute;bottom:0;left:0;right:0;z-index:20;padding:0 24px 24px}
+.hp-fstats-bar{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;align-items:center;gap:0;padding:20px 32px;border-top:1px solid rgba(255,255,255,.1)}
+.hp-fstat{display:flex;flex-direction:column;align-items:center;text-align:center}
+.hp-fstat-num-row{display:flex;align-items:baseline;gap:2px}
+.hp-fstat-num-row .hp-stat-num{font-size:36px;font-weight:800;color:#fff;line-height:1}
+.hp-fstat-num-row .hp-stat-plus{font-size:24px;font-weight:700;color:var(--accent-cyan)}
+.hp-fstat-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.4);margin-top:6px}
+.hp-fstat-divider{width:1px;height:44px;background:rgba(255,255,255,.08)}
 
 /* --- Services Dark Premium --- */
 .hp-svc-section{padding:100px 0;background:linear-gradient(160deg,#040c1e,#0d2255 40%,#091a42 80%,#061432);position:relative;overflow:hidden}
